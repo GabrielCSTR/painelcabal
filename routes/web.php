@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 
+Route::prefix('user')
+        ->namespace('User')
+        ->middleware('auth')
+        ->group(function() {
+
 //Route::get('admin/cabalauthtable', 'Admin\CabalAuthController@index')->name('plans.index');
 
 //Route::get('admin/plans', 'Admin\PlanController@index')->name('plans.index');
@@ -19,10 +24,13 @@ Route::get('user/chars/{id}', 'User\CharsController@show')->name('user.chars.sho
 Route::get('user/chars', 'User\CharsController@index')->name('user.chars');
 ///////////////////
 
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+/**
+ * Auth Routes
+ */
+Auth::routes();
