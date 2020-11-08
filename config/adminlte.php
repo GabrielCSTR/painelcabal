@@ -248,12 +248,12 @@ return [
         ],
         [
             'text' => 'Limpar PK',
-            'url'  => 'user/chars',
+            'url'  => 'user/limparpk',
             'icon'  => 'fas fa-fw fa-handshake',
         ],
         [
             'text' => 'Conversor',
-            'url'  => 'user/chars',
+            'url'  => 'user/conversor',
             'icon'  => 'fas fa-fw fa-money-bill-wave',
         ],
     ],

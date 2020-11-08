@@ -14,7 +14,10 @@ Route::get('user/profile', 'User\ProfileController@index')->name('user.profile')
 Route::get('user', 'User\ProfileController@index')->name('user.index');
 ///////////////////
 
+// USER CHARS
+Route::get('user/chars/{id}', 'User\CharsController@show')->name('user.chars.show');
 Route::get('user/chars', 'User\CharsController@index')->name('user.chars');
+///////////////////
 
 Route::get('/', function () {
     return view('welcome');
