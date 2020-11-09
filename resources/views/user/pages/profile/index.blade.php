@@ -9,7 +9,6 @@
       <li class="breadcrumb-item"><a href="{{ route('user.index') }}">Dashboard</a></li>
       <li class="breadcrumb-item active"><a href="{{ route('user.profile') }} ">Perfil</a></li>
     </ol>
-  <h1>Perfil - {{ $info->ID }}</h1>
 @stop
 
 @section('content')
@@ -18,7 +17,7 @@
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-header">
-                  Perfil - {{ $info->ID }}
+                  <h1> Perfil - {{ $info->ID }}</h1>
                 </div>
                 <div class="card-body">
                   <h5 class="card-text">Conta: <span style="font-wieght:bold; font-family:Candara; color:orange;">{{ $info->ID }}</span></h5> 
