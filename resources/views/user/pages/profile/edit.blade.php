@@ -16,7 +16,24 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-text">Atenção você só pode editar sua senha!</h5> 
+            <h5 class="card-text">Atenção você só pode editar sua senha!</h5>
+            @if ($errors->any())
+            <div class="container-login100-form-btn">
+                <div class="alert alert-danger ">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            @endif
+
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session()->get('success') }}
+                </div>
+            @endif
 
             <form action="{{ route('user.update', $info->ID) }}" class="form" method="POST">
                 @csrf

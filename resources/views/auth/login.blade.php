@@ -30,7 +30,7 @@
                             <input class="input100" type="password" name="pass" placeholder="Password">
                             <span class="focus-input100"></span>
                         </div>
-                        
+
                         @if ($errors->any())
                         <div class="container-login100-form-btn">
                             <div class="alert alert-danger ">
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         @endif
-                    
+
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn" type="submit">
                                 Login
@@ -57,19 +57,26 @@
                             <a href="#" class="txt2">
                                 sua senha ?
                             </a>
+
+                            <span class="txt1" style="margin-left: 10%;">
+                                Não tem
+                            </span>
+                            <a href="#" class="txt2">
+                                Cadastro ?
+                            </a>
                         </div>
 
                         <div class="w-full text-center">
                             © Copyright <a href="https://www.cabalmytology.com.br/" class="txt3">
                                 Cabal Mytology
                             </a>. All Rights Reserved
-                            
+
                         </div>
                         <div class="w-full text-center">
                             Desenvolvedor<a href="https://strdeveloped.com.br/" class="txt3">
                                 STRDeveloped
                             </a>
-                            
+
                         </div>
                     </form>
                     <div class="login100-more" style="background-image: url('img/bg-01.jpg');"></div>

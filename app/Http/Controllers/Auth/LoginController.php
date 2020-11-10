@@ -52,7 +52,7 @@ class LoginController extends Controller
             'pass' => ['required', 'regex:/^[a-z\d_]{4,15}+$/i', 'string', 'min:4','max:15']
         ], [
 
-            'username.required' => '* Informe o nome do seu usuario',
+            'username.required' => '* Informe o seu username',
             'pass.required' => '* Informe sua senha',
 
             'username.min' => '* O usuario tem que ter no minimo 4 caracteres!',
@@ -61,8 +61,8 @@ class LoginController extends Controller
             'username.regex' => '* Campo Login requer apenas letras/numeros, não utilize acentuações ou espaço, e o login requer no minimo 4 caracteres e no máximo 28',
             'pass.regex' => '* Campo Senha requer apenas letras/numeros, não utilize acentuações ou espaço, a senha requer no minimo 4 caracteres e no máximo 15.',
         ]);
-    
-        $ClassArrAy = array('-1','-2','-3','-4','-5','-6','-7','-8','-9','INSERT','INTO','DROP','DELETE','UPDATER','WHERE','FROM','insert','into','drop','from','delete','updater','where','hack','sony','machine','cabal','pirata','nexus','lotus','');
+
+        $ClassArrAy = array('-1','-2','-3','-4','-5','-6','-7','-8','-9','INSERT','INTO','DROP','DELETE','UPDATER','WHERE','FROM','insert','into','drop','from','delete','updater','where','hack','sony','machine','cabal','pirata','nexus','lotus');
 
         $messages = $validator->errors();
         //valida username
@@ -94,9 +94,9 @@ class LoginController extends Controller
         }
 
         // Pega informações da tabela cabal_auth_table
-        $db = env('DB_ACCOUNT'); // DB 
-        $account = DB::select( 
-            DB::raw("SELECT * FROM $db.dbo.cabal_auth_table WHERE ID='$request->username' AND PWDCOMPARE('$request->pass', Password)=1") 
+        $db = env('DB_ACCOUNT'); // DB
+        $account = DB::select(
+            DB::raw("SELECT * FROM $db.dbo.cabal_auth_table WHERE ID='$request->username' AND PWDCOMPARE('$request->pass', Password)=1")
         );
 
         // Validação login
@@ -112,7 +112,7 @@ class LoginController extends Controller
             if($emailUser[0] === null)
             {
                 $messages->add('username','Você precisa de email valido para poder acessar o painel. Caso tenha duvidas entre em contato com o ADM!'); // Add the message
-                            
+
                 return redirect('login')
                         ->withErrors($messages)
                         ->withInput();
@@ -151,20 +151,24 @@ class LoginController extends Controller
                 }
                 else
                 {
-                     return redirect()->intended('/login'); // login failed
+                    $messages->add('username','Informacoes de Login incorretas. -500'); // Add the message
+
+                    return redirect('login')
+                        ->withErrors($messages)
+                        ->withInput();
                 }
             }
-           
+
         } else { // dados login invalido
 
             $messages->add('username','Informacoes de Login incorretas.'); // Add the message
-            
+
             return redirect('login')
                 ->withErrors($messages)
                 ->withInput();
         }
 
         //dd($validator);
-       
+
     }
 }

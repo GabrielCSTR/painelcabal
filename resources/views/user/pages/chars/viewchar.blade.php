@@ -24,24 +24,54 @@
     <div class="col-sm-12">
         <!-- Card -->
         <div class="card testimonial-card">
-            
+
             <!-- Background color -->
             <div class="card-up indigo lighten-1"></div>
-        
+
             <!-- Content -->
             <div class="card-body">
-                <h5 class="card-text" style="font-wieght:bold; font-family:Candara; color:red;">IMPORTANTE!</h5> 
+                <h5 class="card-text" style="font-wieght:bold; font-family:Candara; color:red;">IMPORTANTE!</h5>
                 <h5 class="card-text">- Para adicionar pontos em seu personagem é necessário deslogar da sua conta.</h5>
-                <h5 class="card-text">- Seu personagem precisa ter pontos acima de [0].</h5>  
+                <h5 class="card-text">- Seu personagem precisa ter pontos acima de [0].</h5>
                 <hr>
                 <!-- Name -->
                 <h3 >Pontos: {{ $char->PNT }} </h3>
                 <hr>
+                @if ($errors->any())
+                <div class="container-login100-form-btn">
+                    <div class="alert alert-danger ">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                @endif
+
+                @if(session()->has('danger'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('danger') }}
+                    </div>
+                @endif
+
+                @if(session()->has('warning'))
+                    <div class="alert alert-warning">
+                        {{ session()->get('warning') }}
+                    </div>
+                @endif
+
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
                 <!-- INFOS -->
-                <form action="{{ route('user.update', $char->STR) }}" class="form" method="POST">
+                <form action="{{ route('user.chars.update', $char->CharacterIdx) }}" class="form" method="POST">
                     @csrf
                     @method('PUT')
-    
+
                    <div class="form-group">
                        <label>FOR: {{ $char->STR }} </label>
                        <input type="text" name="FOR" class="form-control" placeholder="{{ $char->STR }}" >
