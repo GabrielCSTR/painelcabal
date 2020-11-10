@@ -82,7 +82,7 @@ class CharsController extends Controller
             $AccountON = array_column($account, 'Login');
 
             //VERIFICA CONTA LOGADA
-            if((int)$AccountON != 1)
+            if((int)$AccountON[0])
             {
                 $message = 'Voce deve sair do jogo para acessar esta função';
                 return redirect()->back() ->with('warning', $message);

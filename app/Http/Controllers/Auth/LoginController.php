@@ -102,6 +102,15 @@ class LoginController extends Controller
         // Validação login
         if ($account) {
 
+            if($account[0]->AuthType ==2 || $account[0]->AuthType==3)
+            {
+                $messages->add('username','Atenção, sua conta está bloqueada não é possivel fazer login!'); // Add the message
+
+                return redirect('login')
+                        ->withErrors($messages)
+                        ->withInput();
+            }
+
             //SALVANDO DADOS DO USUARIO
             // EMAIL
             $emailUser = array_column($account, 'Email');
@@ -147,7 +156,8 @@ class LoginController extends Controller
                 // Validação Auth
                 if (Auth::attempt(['email' => $emailUser[0], 'password' => $request->pass])) {
                     // Authentication passed...
-                    return redirect()->intended('/user'); // login sucess
+                    $message = 'Logado com sucesso, Seja bem vindo ao painel user - Cabal Mytology!';
+                    return redirect()->intended('/user')->with('success', $message);
                 }
                 else
                 {

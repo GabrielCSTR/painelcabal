@@ -43,6 +43,12 @@
                         </div>
                         @endif
 
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
+
                         <div class="container-login100-form-btn">
                             <button class="login100-form-btn" type="submit">
                                 Login
@@ -54,26 +60,26 @@
                                 Esqueceu
                             </span>
 
-                            <a href="#" class="txt2">
+                            <a href="#" target="_blank" class="txt2">
                                 sua senha ?
                             </a>
 
                             <span class="txt1" style="margin-left: 10%;">
                                 Não tem
                             </span>
-                            <a href="#" class="txt2">
+                            <a href="https://www.cabalmytology.net/#register" target="_blank" class="txt2">
                                 Cadastro ?
                             </a>
                         </div>
 
                         <div class="w-full text-center">
-                            © Copyright <a href="https://www.cabalmytology.com.br/" class="txt3">
+                            © Copyright <a href="https://www.cabalmytology.com.br/" target="_blank" class="txt3">
                                 Cabal Mytology
                             </a>. All Rights Reserved
 
                         </div>
                         <div class="w-full text-center">
-                            Desenvolvedor<a href="https://strdeveloped.com.br/" class="txt3">
+                            Desenvolvedor<a href="https://strdeveloped.com.br/" target="_blank" class="txt3">
                                 STRDeveloped
                             </a>
 

@@ -34,9 +34,17 @@ class ProfileController extends Controller
 
         $db = env('DB_ACCOUNT'); // DB
         $profile = DB::select( DB::raw("SELECT * FROM $db.dbo.cabal_auth_table WHERE ID='$username'") );
+        $usernum = $profile[0]->UserNum;
+
+        // VERIFICA O CASH DA CONTA
+        $cashUser = DB::select( DB::raw("SELECT * FROM CabalCash.dbo.CashAccount WHERE UserNum='$usernum'") );
+        $cashTotal = 0;
+        if($cashUser)
+            $cashTotal = $cashUser[0]->Cash;
 
         return view('user.pages.profile.index', [
             'profile' => $profile,
+            'cash' => $cashTotal
         ]);
     }
 

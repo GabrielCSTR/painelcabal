@@ -19,12 +19,21 @@ Route::get('user/chars/{id}', 'User\CharsController@show')->middleware('auth')->
 Route::get('user/chars', 'User\CharsController@index')->middleware('auth')->name('user.chars');
 ///////////////////
 
+// LIMPAR PK
+Route::get('user/limparpk/{id}', 'User\LimparPKController@update')->middleware('auth')->name('user.limparpk.limpar');
+Route::get('user/limparpk', 'User\LimparPKController@index')->middleware('auth')->name('user.limparpk');
 
+// CONVERSOR
+Route::put('user/conversor/{id}', 'User\ConversorController@update')->middleware('auth')->name('user.conversor.convert');
+Route::get('user/conversor', 'User\ConversorController@index')->middleware('auth')->name('user.conversor');
+
+// HOME
 Route::get('/', function () {
     //return view('welcome');
     return redirect('/login');
 });
 
+// LOGIN
 Route::post('/login/auth', 'Auth\LoginController@loginUser')->name('login.user');
 Route::get('/login/auth', function () {
     return redirect('/login');

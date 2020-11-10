@@ -236,7 +236,6 @@ return [
             'search' => false,
             'topnav' => true,
         ],
-        
         [
             'text' => 'Perfil',
             'url'  => 'user/profile',
